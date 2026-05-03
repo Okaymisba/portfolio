@@ -154,72 +154,178 @@
     #hero {
       position: relative; z-index: 1;
       min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
+      display: flex; align-items: center;
       padding: 7rem 2rem 4rem;
       overflow: hidden;
     }
     .hero-inner {
-      max-width: 800px; text-align: center;
+      max-width: 1200px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
     }
-    .hero-badge {
+    .hero-left { position: relative; z-index: 2; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: .6rem;
+      margin-bottom: 1.5rem;
+      animation: fadeUp .7s ease both;
+    }
+    .hero-eyebrow-line {
+      width: 36px; height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 99px;
+    }
+    .hero-eyebrow-text {
+      font-size: .78rem; font-weight: 700; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--accent2);
+    }
+    .hero-status {
       display: inline-flex; align-items: center; gap: .5rem;
-      background: rgba(108,99,255,0.12); border: 1px solid rgba(108,99,255,0.3);
-      padding: .4rem 1rem; border-radius: 99px;
-      font-size: .8rem; font-weight: 600; letter-spacing: .1em;
-      color: var(--accent); text-transform: uppercase;
-      margin-bottom: 1.8rem;
-      animation: fadeUp .8s ease both;
+      background: rgba(0,212,255,0.07); border: 1px solid rgba(0,212,255,0.2);
+      padding: .35rem .9rem; border-radius: 99px;
+      font-size: .75rem; font-weight: 600; color: var(--accent2);
+      margin-bottom: 1.4rem;
+      animation: fadeUp .7s .05s ease both;
     }
-    .hero-badge span { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; animation: blink 1.2s infinite; }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+    .hero-status-dot { width: 7px; height: 7px; background: #4ade80; border-radius: 50%; animation: blink 1.4s infinite; box-shadow: 0 0 6px #4ade80; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .hero-name {
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      font-weight: 500; color: var(--text-muted);
+      letter-spacing: .04em; margin-bottom: .3rem;
+      animation: fadeUp .7s .1s ease both;
+    }
     .hero-title {
-      font-size: clamp(2.8rem, 7vw, 5.5rem);
-      font-weight: 900; line-height: 1.05;
-      letter-spacing: -.03em;
-      margin-bottom: 1.2rem;
-      animation: fadeUp .8s .15s ease both;
+      font-size: clamp(3rem, 6vw, 5.2rem);
+      font-weight: 900; line-height: 1.0;
+      letter-spacing: -.04em;
+      margin-bottom: 1.5rem;
+      animation: fadeUp .7s .18s ease both;
     }
-    .hero-title .gradient-text {
+    .hero-title-line1 { display: block; color: var(--text); }
+    .hero-title-line2 {
+      display: block;
       background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
-      background-size: 200%;
-      animation: shimmer 4s linear infinite;
+      background-clip: text; background-size: 200%;
+      animation: shimmer 5s linear infinite;
     }
     @keyframes shimmer { 0%{background-position:0%} 100%{background-position:200%} }
-    .hero-subtitle {
-      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-      color: var(--text-muted); margin-bottom: .6rem;
-      animation: fadeUp .8s .25s ease both;
-      height: 2em; overflow: hidden;
+    .hero-role-row {
+      display: flex; align-items: center; gap: .8rem;
+      margin-bottom: 1.4rem;
+      animation: fadeUp .7s .26s ease both;
     }
-    .typed-cursor { color: var(--accent); animation: blink 0.7s infinite; }
+    .hero-role-label {
+      font-size: .8rem; color: var(--text-muted); font-weight: 500;
+    }
+    .hero-typed-wrap {
+      display: inline-flex; align-items: center; gap: .3rem;
+      background: rgba(108,99,255,0.1); border: 1px solid rgba(108,99,255,0.2);
+      padding: .3rem .85rem; border-radius: 8px;
+    }
+    #typed { font-size: .9rem; font-weight: 600; color: var(--accent); }
+    .typed-cursor { color: var(--accent); font-weight: 300; animation: blink 0.7s infinite; }
     .hero-desc {
-      font-size: 1.05rem; color: var(--text-muted); max-width: 560px;
-      margin: 0 auto 2.5rem;
-      line-height: 1.7;
-      animation: fadeUp .8s .35s ease both;
+      font-size: 1rem; color: var(--text-muted);
+      line-height: 1.8; margin-bottom: 2.2rem;
+      max-width: 480px;
+      animation: fadeUp .7s .34s ease both;
     }
     .hero-btns {
-      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
-      animation: fadeUp .8s .45s ease both;
+      display: flex; gap: .9rem; flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+      animation: fadeUp .7s .42s ease both;
     }
     .btn-primary {
-      padding: .85rem 2.2rem; border-radius: 99px;
+      padding: .8rem 2rem; border-radius: 12px;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: #fff; font-weight: 700; font-size: 1rem;
-      box-shadow: 0 0 30px rgba(108,99,255,0.4);
+      color: #fff; font-weight: 700; font-size: .95rem;
+      box-shadow: 0 0 28px rgba(108,99,255,0.35);
       transition: transform .25s, box-shadow .25s;
+      display: inline-flex; align-items: center; gap: .5rem;
     }
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 0 50px rgba(108,99,255,0.6); }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 40px rgba(108,99,255,0.55); }
     .btn-secondary {
-      padding: .85rem 2.2rem; border-radius: 99px;
+      padding: .8rem 2rem; border-radius: 12px;
       border: 1.5px solid var(--border); color: var(--text);
-      font-weight: 600; font-size: 1rem;
+      font-weight: 600; font-size: .95rem;
       backdrop-filter: blur(10px);
       transition: border-color .3s, background .3s, transform .25s;
+      display: inline-flex; align-items: center; gap: .5rem;
     }
-    .btn-secondary:hover { border-color: var(--accent); background: rgba(108,99,255,0.1); transform: translateY(-3px); }
+    .btn-secondary:hover { border-color: var(--accent); background: rgba(108,99,255,0.08); transform: translateY(-3px); }
+    .hero-socials {
+      display: flex; align-items: center; gap: 1.2rem;
+      animation: fadeUp .7s .5s ease both;
+    }
+    .hero-social-label { font-size: .75rem; color: var(--text-muted); letter-spacing: .1em; text-transform: uppercase; }
+    .hero-social-divider { width: 24px; height: 1px; background: var(--border); }
+    .hero-social-icons { display: flex; gap: .7rem; }
+    .hero-social-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: var(--surface); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; transition: transform .3s, border-color .3s, box-shadow .3s;
+    }
+    .hero-social-icon:hover { transform: translateY(-3px); border-color: var(--accent); box-shadow: 0 0 16px rgba(108,99,255,0.3); }
+
+    /* Hero Right — Avatar Card */
+    .hero-right {
+      position: relative; display: flex; align-items: center; justify-content: center;
+      animation: fadeUp .8s .2s ease both;
+    }
+    .hero-avatar-card {
+      position: relative; width: 340px; height: 400px;
+    }
+    .hero-avatar-bg {
+      position: absolute; inset: 0; border-radius: 32px;
+      background: linear-gradient(135deg, rgba(108,99,255,0.15), rgba(0,212,255,0.08));
+      border: 1px solid rgba(108,99,255,0.2);
+      backdrop-filter: blur(20px);
+      overflow: hidden;
+    }
+    .hero-avatar-bg::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 30% 20%, rgba(108,99,255,0.2) 0%, transparent 60%),
+                  radial-gradient(circle at 80% 80%, rgba(0,212,255,0.12) 0%, transparent 50%);
+    }
+    .hero-grid-lines {
+      position: absolute; inset: 0; opacity: 0.07;
+      background-image: linear-gradient(rgba(108,99,255,1) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(108,99,255,1) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+    .hero-avatar-emoji {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -52%);
+      font-size: 7rem; filter: drop-shadow(0 0 30px rgba(108,99,255,0.4));
+      animation: float1 6s ease-in-out infinite;
+    }
+    .hero-avatar-ring {
+      position: absolute; inset: -12px;
+      border-radius: 42px;
+      border: 1.5px solid transparent;
+      background: linear-gradient(135deg, rgba(108,99,255,0.4), rgba(0,212,255,0.2), transparent) border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out; mask-composite: exclude;
+    }
+    /* Floating chips */
+    .hero-chip {
+      position: absolute; display: flex; align-items: center; gap: .45rem;
+      background: rgba(13,13,26,0.85); border: 1px solid rgba(108,99,255,0.3);
+      backdrop-filter: blur(12px); border-radius: 12px;
+      padding: .5rem .9rem; font-size: .8rem; font-weight: 600;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      white-space: nowrap;
+    }
+    .chip1 { top: -18px; left: -30px; animation: float2 5s ease-in-out infinite; }
+    .chip2 { bottom: 60px; right: -36px; animation: float1 7s ease-in-out infinite; color: var(--accent2); border-color: rgba(0,212,255,0.3); }
+    .chip3 { bottom: -18px; left: 20px; animation: float2 6s ease-in-out infinite 1s; color: #4ade80; border-color: rgba(74,222,128,0.3); }
+    .chip-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .chip1 .chip-dot { background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+    .chip2 .chip-dot { background: var(--accent2); box-shadow: 0 0 8px var(--accent2); }
+    .chip3 .chip-dot { background: #4ade80; box-shadow: 0 0 8px #4ade80; }
+
     .hero-scroll {
       position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
       display: flex; flex-direction: column; align-items: center; gap: .5rem;
@@ -236,13 +342,23 @@
       50%{transform:scaleY(.3);transform-origin:top}
     }
     .hero-orb {
-      position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0;
+      position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none; z-index: 0;
     }
-    .orb1 { width: 500px; height: 500px; background: rgba(108,99,255,0.12); top: -100px; right: -150px; animation: float1 8s ease-in-out infinite; }
-    .orb2 { width: 400px; height: 400px; background: rgba(0,212,255,0.08); bottom: 0; left: -100px; animation: float2 10s ease-in-out infinite; }
-    .orb3 { width: 300px; height: 300px; background: rgba(255,101,132,0.07); top: 40%; left: 40%; animation: float1 12s ease-in-out infinite reverse; }
-    @keyframes float1 { 0%,100%{transform:translateY(0) rotate(0)} 50%{transform:translateY(-30px) rotate(5deg)} }
-    @keyframes float2 { 0%,100%{transform:translateY(0) rotate(0)} 50%{transform:translateY(25px) rotate(-5deg)} }
+    .orb1 { width: 600px; height: 600px; background: rgba(108,99,255,0.1); top: -200px; right: -100px; animation: float1 10s ease-in-out infinite; }
+    .orb2 { width: 400px; height: 400px; background: rgba(0,212,255,0.07); bottom: -100px; left: -100px; animation: float2 12s ease-in-out infinite; }
+    @keyframes float1 { 0%,100%{transform:translateY(0) rotate(0)} 50%{transform:translateY(-25px) rotate(4deg)} }
+    @keyframes float2 { 0%,100%{transform:translateY(0) rotate(0)} 50%{transform:translateY(20px) rotate(-4deg)} }
+
+    /* Hero responsive */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
+      .hero-eyebrow, .hero-role-row, .hero-btns, .hero-socials { justify-content: center; }
+      .hero-desc { margin: 0 auto 2rem; }
+      .hero-right { justify-content: center; }
+      .hero-avatar-card { width: 280px; height: 330px; }
+      .chip1 { left: -10px; }
+      .chip2 { right: -10px; }
+    }
 
     /* ===== SECTION COMMONS ===== */
     section { position: relative; z-index: 1; padding: 7rem 2rem; }
@@ -664,22 +780,61 @@
 <section id="hero">
   <div class="hero-orb orb1"></div>
   <div class="hero-orb orb2"></div>
-  <div class="hero-orb orb3"></div>
   <div class="hero-inner">
-    <div class="hero-badge">
-      <span></span> Available for opportunities
+
+    <!-- LEFT -->
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-line"></div>
+        <span class="hero-eyebrow-text">Portfolio 2026</span>
+      </div>
+      <div class="hero-status">
+        <span class="hero-status-dot"></span> Open to opportunities
+      </div>
+      <p class="hero-name">Hello, I'm</p>
+      <h1 class="hero-title">
+        <span class="hero-title-line1">Misbah</span>
+        <span class="hero-title-line2">Sarfaraz</span>
+      </h1>
+      <div class="hero-role-row">
+        <span class="hero-role-label">Currently</span>
+        <div class="hero-typed-wrap">
+          <span id="typed"></span><span class="typed-cursor">|</span>
+        </div>
+      </div>
+      <p class="hero-desc">
+        A passionate developer who loves building beautiful, functional, and high-performance digital experiences that make a real difference.
+      </p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-primary">View My Work →</a>
+        <a href="#contact" class="btn-secondary">Let's Talk</a>
+      </div>
+      <div class="hero-socials">
+        <span class="hero-social-label">Find me</span>
+        <div class="hero-social-divider"></div>
+        <div class="hero-social-icons">
+          <a href="https://github.com/Okaymisba" target="_blank" class="hero-social-icon" title="GitHub">🐙</a>
+          <a href="https://linkedin.com/in/misbah-sarfaraz" target="_blank" class="hero-social-icon" title="LinkedIn">💼</a>
+          <a href="mailto:msbahsarfaraz@gmail.com" class="hero-social-icon" title="Email">📧</a>
+        </div>
+      </div>
     </div>
-    <h1 class="hero-title">
-      Hi, I'm <br><span class="gradient-text">Misbah Sarfaraz</span>
-    </h1>
-    <p class="hero-subtitle" id="typed-text"><span id="typed"></span><span class="typed-cursor">|</span></p>
-    <p class="hero-desc">
-      A passionate developer who loves building beautiful, functional, and high-performance digital experiences that make a real difference.
-    </p>
-    <div class="hero-btns">
-      <a href="#projects" class="btn-primary">View My Work</a>
-      <a href="#contact" class="btn-secondary">Let's Talk</a>
+
+    <!-- RIGHT -->
+    <div class="hero-right">
+      <div class="hero-avatar-card">
+        <div class="hero-avatar-bg">
+          <div class="hero-grid-lines"></div>
+        </div>
+        <div class="hero-avatar-ring"></div>
+        <div class="hero-avatar-emoji">👨‍💻</div>
+        <!-- Floating chips -->
+        <div class="hero-chip chip1"><span class="chip-dot"></span> CS Student</div>
+        <div class="hero-chip chip2"><span class="chip-dot"></span> Web Dev</div>
+        <div class="hero-chip chip3"><span class="chip-dot"></span> Available Now</div>
+      </div>
     </div>
+
   </div>
   <div class="hero-scroll">
     <span>Scroll</span>
